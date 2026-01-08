@@ -12,7 +12,7 @@
 
 ### 1. 🌐 Web Studio (Online)
 Brand your images instantly in your browser without any installation.
-* **Live App:** [Launch Watermark Studio Online](https://share.streamlit.io/)
+* **Live App:** [Launch Watermark Studio Online](https://watermark-studio.streamlit.app/)
 
 ### 2. 💻 Desktop Edition (Windows)
 Native Windows application for high-performance offline processing.
