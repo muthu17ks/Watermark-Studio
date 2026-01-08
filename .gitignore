@@ -1,0 +1,28 @@
+# --- Python General ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# --- PyInstaller (Desktop) ---
+# These are temporary files created when making the EXE
+desktop/build/
+desktop/dist/
+*.spec
+
+# --- Inno Setup (Installer) ---
+# This ignores the folder where your final Setup.exe is saved
+desktop/setup/
+
+# --- Inno Setup (Script) ---
+desktop/script.iss
+
+# --- IDEs ---
+.vscode/
+.idea/
+
+# --- OS temporary files ---
+.DS_Store
+Thumbs.db

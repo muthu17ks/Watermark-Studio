@@ -3,16 +3,12 @@ import tkinter as tk
 from tkinter import filedialog, ttk, messagebox, colorchooser
 from PIL import Image, ImageTk, ImageDraw, ImageFont
 
-# High DPI Scaling
 try:
     from ctypes import windll
-
     windll.shcore.SetProcessDpiAwareness(1)
 except Exception:
     pass
 
-
-# System Font Resolver
 def get_system_font() -> str | None:
     search_paths = [
         r"C:\Windows\Fonts\arial.ttf",
@@ -27,8 +23,6 @@ def get_system_font() -> str | None:
             return path
     return None
 
-
-# Main Application
 class WatermarkApp:
     def __init__(self, root: tk.Tk) -> None:
         self.root = root
@@ -36,7 +30,6 @@ class WatermarkApp:
         self.root.geometry("1250x900")
         self.root.minsize(900, 700)
 
-        # Robust Icon Setup
         self._set_app_icon()
 
         self._resize_timer = None
@@ -63,7 +56,7 @@ class WatermarkApp:
         self.text_color: tuple[int, int, int] = (255, 255, 255)
 
         self.mode_var = tk.StringVar(value="text")
-        self.text_content = tk.StringVar(value="© Copyright 2025")
+        self.text_content = tk.StringVar(value="© Copyright")
         self.position_var = tk.StringVar(value="Bottom Right")
         self.size_var = tk.DoubleVar(value=5.0)
         self.opacity_var = tk.DoubleVar(value=90.0)
@@ -75,7 +68,6 @@ class WatermarkApp:
 
         self.root.bind("<Configure>", self._on_resize_debounced)
 
-    # Icon Handler
     def _set_app_icon(self) -> None:
         icon_path = "logo-icon.png"
         try:
@@ -86,7 +78,6 @@ class WatermarkApp:
         except Exception:
             pass
 
-    # Style Configuration
     def _setup_styles(self) -> None:
         style = ttk.Style()
         style.theme_use("clam")
@@ -177,7 +168,6 @@ class WatermarkApp:
 
         self.root.configure(bg=self.colors["bg_main"])
 
-    # Layout Construction
     def _build_layout(self) -> None:
         sidebar_container = tk.Frame(
             self.root,
@@ -308,7 +298,6 @@ class WatermarkApp:
 
         self._draw_canvas_placeholder()
 
-    # Custom Slider Component
     def _create_smart_slider(self, parent, title, variable, min_val, max_val):
         container = ttk.Frame(parent)
         container.pack(fill="x", pady=(0, 15))
@@ -362,7 +351,6 @@ class WatermarkApp:
         )
         btn_plus.pack(side="right")
 
-    # Application Logic
     def _draw_canvas_placeholder(self) -> None:
         self.canvas.delete("all")
         self.canvas.update_idletasks()
@@ -614,7 +602,6 @@ class WatermarkApp:
             messagebox.showinfo("Success", "Image saved successfully.")
         except Exception as exc:
             messagebox.showerror("Error", f"Could not save file:\n{exc}")
-
 
 if __name__ == "__main__":
     main_window = tk.Tk()
